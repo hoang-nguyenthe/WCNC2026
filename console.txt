@@ -1,0 +1,716 @@
+(venv) ➜  performance_evaluation_project python3 run_evaluation.py
+--- Đang trong block __main__ ---
+--- Bắt đầu hàm run_experiment() ---
+
+===== BẮT ĐẦU KỊCH BẢN 1: SCALABILITY vs. N =====
+
+--- Chạy Kịch bản 1 với N = 20 ---
+Tạo dữ liệu cho N=20, seed=42, base_SA=500, p_mu=0.9...
+  [Debug] Chuẩn bị gọi solve_heuristic_search cho N=20...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 4120.00 (n=8, k=1, sz=12)
+Hoàn thành HGIDA. Thời gian chạy: 2.65s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) found Optimal solution: Z = 1428.57 in 15.45s (n=20, k=7)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 0.10s
+
+--- Chạy Kịch bản 1 với N = 40 ---
+Tạo dữ liệu cho N=40, seed=42, base_SA=500, p_mu=0.9...
+  [Debug] Chuẩn bị gọi solve_heuristic_search cho N=40...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 4110.00 (n=8, k=1, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2610.00 (n=10, k=2, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2110.00 (n=12, k=3, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1860.00 (n=14, k=4, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1710.00 (n=16, k=5, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1536.67 (n=17, k=6, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1467.14 (n=19, k=7, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1422.50 (n=21, k=8, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1342.22 (n=22, k=9, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1310.00 (n=24, k=10, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1291.82 (n=26, k=11, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1245.00 (n=27, k=12, sz=12)
+Hoàn thành HGIDA. Thời gian chạy: 46.86s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 1000.00 (n=40, k=20)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 0.44s
+
+--- Chạy Kịch bản 1 với N = 60 ---
+Tạo dữ liệu cho N=60, seed=42, base_SA=500, p_mu=0.9...
+  [Debug] Chuẩn bị gọi solve_heuristic_search cho N=60...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 4100.00 (n=8, k=1, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2600.00 (n=10, k=2, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1943.33 (n=11, k=3, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1735.00 (n=13, k=4, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1610.00 (n=15, k=5, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1516.67 (n=17, k=6, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1395.71 (n=18, k=7, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1360.00 (n=20, k=8, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1276.67 (n=21, k=9, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1260.00 (n=23, k=10, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1236.36 (n=25, k=11, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1193.33 (n=26, k=12, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1186.92 (n=28, k=13, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1145.71 (n=29, k=14, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1143.33 (n=31, k=15, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1110.00 (n=32, k=16, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1092.22 (n=35, k=18, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1083.68 (n=37, k=19, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1070.00 (n=38, k=20, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1062.38 (n=40, k=21, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1051.82 (n=41, k=22, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1044.78 (n=43, k=23, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1036.67 (n=44, k=24, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1023.85 (n=47, k=26, sz=12)
+Hoàn thành HGIDA. Thời gian chạy: 241.87s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 867.65 (n=59, k=34)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 0.85s
+
+--- Chạy Kịch bản 1 với N = 80 ---
+Tạo dữ liệu cho N=80, seed=42, base_SA=500, p_mu=0.9...
+  [Debug] Chuẩn bị gọi solve_heuristic_search cho N=80...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 4100.00 (n=8, k=1, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2600.00 (n=10, k=2, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1943.33 (n=11, k=3, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1735.00 (n=13, k=4, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1600.00 (n=15, k=5, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1516.67 (n=17, k=6, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1395.71 (n=18, k=7, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1350.00 (n=20, k=8, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1276.67 (n=21, k=9, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1250.00 (n=23, k=10, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1200.91 (n=24, k=11, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1183.33 (n=26, k=12, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1148.46 (n=27, k=13, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1135.71 (n=29, k=14, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1110.00 (n=30, k=15, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1100.00 (n=32, k=16, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1080.59 (n=33, k=17, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1072.22 (n=35, k=18, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1057.37 (n=36, k=19, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1050.00 (n=38, k=20, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1038.57 (n=39, k=21, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1019.09 (n=40, k=22, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1005.83 (n=43, k=24, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 994.62 (n=46, k=26, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 985.00 (n=49, k=28, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 982.07 (n=50, k=29, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 976.67 (n=52, k=30, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 974.84 (n=53, k=31, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 970.97 (n=54, k=31, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 969.38 (n=55, k=32, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 968.48 (n=56, k=33, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 958.24 (n=57, k=34, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 953.33 (n=60, k=36, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 948.95 (n=63, k=38, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 945.00 (n=66, k=40, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 941.46 (n=69, k=41, sz=10)
+Hoàn thành HGIDA. Thời gian chạy: 625.30s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 806.12 (n=79, k=49)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.32s
+
+--- Chạy Kịch bản 1 với N = 100 ---
+Tạo dữ liệu cho N=100, seed=42, base_SA=500, p_mu=0.9...
+  [Debug] Chuẩn bị gọi solve_heuristic_search cho N=100...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 3600.00 (n=7, k=1, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2360.00 (n=9, k=2, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1933.33 (n=11, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1725.00 (n=13, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1600.00 (n=15, k=5, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1443.33 (n=16, k=6, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1385.71 (n=18, k=7, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1350.00 (n=20, k=8, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1266.67 (n=21, k=9, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1250.00 (n=23, k=10, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1190.91 (n=24, k=11, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1183.33 (n=26, k=12, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1138.46 (n=27, k=13, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1135.71 (n=29, k=14, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1100.00 (n=30, k=15, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1078.75 (n=31, k=16, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1070.59 (n=33, k=17, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1054.44 (n=34, k=18, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1047.37 (n=36, k=19, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1035.00 (n=37, k=20, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1028.57 (n=39, k=21, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1019.09 (n=40, k=22, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1001.30 (n=41, k=23, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 995.83 (n=43, k=24, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 990.00 (n=44, k=25, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 984.62 (n=46, k=26, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 980.37 (n=47, k=27, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 967.14 (n=48, k=28, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 960.00 (n=51, k=30, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 958.71 (n=52, k=31, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 954.84 (n=53, k=31, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 953.75 (n=54, k=32, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 953.33 (n=55, k=33, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 948.48 (n=56, k=33, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 948.24 (n=57, k=34, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 938.57 (n=58, k=35, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 934.32 (n=61, k=37, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 928.95 (n=63, k=38, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 924.88 (n=66, k=41, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 919.52 (n=68, k=42, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 913.95 (n=70, k=43, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 913.48 (n=73, k=46, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 911.11 (n=73, k=45, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 908.51 (n=76, k=47, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 905.92 (n=78, k=49, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 904.12 (n=81, k=51, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 903.92 (n=82, k=51, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 898.08 (n=83, k=52, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 896.30 (n=86, k=54, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 894.64 (n=89, k=56, sz=10)
+Hoàn thành HGIDA. Thời gian chạy: 1240.47s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 773.44 (n=99, k=64)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.86s
+
+===== BẮT ĐẦU KỊCH BẢN 2: SENSITIVITY vs. SA & RELIABILITY =====
+
+--- Chạy Kịch bản 2 với N=50, SA=200, p_mu=0.8 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=200, p_mu=0.8...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 2130.00 (n=10, k=1, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 1330.00 (n=12, k=2, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 1063.33 (n=14, k=3, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 940.00 (n=16, k=4, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 860.00 (n=18, k=5, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 806.67 (n=20, k=6, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 768.57 (n=22, k=7, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 740.00 (n=24, k=8, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 717.78 (n=26, k=9, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 700.00 (n=28, k=10, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 685.45 (n=30, k=11, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 666.67 (n=31, k=12, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 657.69 (n=33, k=13, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 650.00 (n=35, k=14, sz=15)
+Hoàn thành HGIDA. Thời gian chạy: 191.65s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 454.55 (n=50, k=22)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.03s
+
+--- Chạy Kịch bản 2 với N=50, SA=200, p_mu=0.9 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=200, p_mu=0.9...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 1700.00 (n=8, k=1, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1110.00 (n=10, k=2, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 900.00 (n=12, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 800.00 (n=14, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 710.00 (n=15, k=5, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 676.67 (n=17, k=6, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 652.86 (n=19, k=7, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 610.00 (n=20, k=8, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 598.89 (n=22, k=9, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 580.00 (n=23, k=10, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 564.55 (n=25, k=11, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 560.00 (n=27, k=12, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 550.77 (n=28, k=13, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 538.57 (n=30, k=14, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 533.33 (n=31, k=15, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 532.50 (n=33, k=16, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 530.00 (n=34, k=17, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 525.00 (n=34, k=16, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 521.76 (n=35, k=17, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 520.00 (n=36, k=18, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 519.47 (n=37, k=19, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 510.53 (n=39, k=19, sz=10)
+Hoàn thành HGIDA. Thời gian chạy: 252.04s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 369.23 (n=48, k=26)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.03s
+
+--- Chạy Kịch bản 2 với N=50, SA=200, p_mu=0.95 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=200, p_mu=0.95...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 1500.00 (n=7, k=1, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1000.00 (n=9, k=2, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 833.33 (n=11, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 750.00 (n=13, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 660.00 (n=14, k=5, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 633.33 (n=16, k=6, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 614.29 (n=18, k=7, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 575.00 (n=19, k=8, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 566.67 (n=21, k=9, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 540.00 (n=22, k=10, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 536.36 (n=24, k=11, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 516.67 (n=25, k=12, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 515.38 (n=27, k=13, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 500.00 (n=28, k=14, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 496.67 (n=29, k=15, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 487.50 (n=31, k=16, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 486.47 (n=32, k=17, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 478.42 (n=35, k=19, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 471.90 (n=38, k=21, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 471.43 (n=39, k=21, sz=10)
+Hoàn thành HGIDA. Thời gian chạy: 275.65s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 342.86 (n=48, k=28)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.02s
+
+--- Chạy Kịch bản 2 với N=50, SA=500, p_mu=0.8 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=500, p_mu=0.8...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 5130.00 (n=10, k=1, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 3130.00 (n=12, k=2, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 2463.33 (n=14, k=3, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 2140.00 (n=16, k=4, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1940.00 (n=18, k=5, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1806.67 (n=20, k=6, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1711.43 (n=22, k=7, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1640.00 (n=24, k=8, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1584.44 (n=26, k=9, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1540.00 (n=28, k=10, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1503.64 (n=30, k=11, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 1441.67 (n=31, k=12, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 1419.23 (n=33, k=13, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 1400.00 (n=35, k=14, sz=15)
+Hoàn thành HGIDA. Thời gian chạy: 234.07s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 1136.36 (n=50, k=22)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.14s
+
+--- Chạy Kịch bản 2 với N=50, SA=500, p_mu=0.9 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=500, p_mu=0.9...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 4100.00 (n=8, k=1, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2610.00 (n=10, k=2, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2100.00 (n=12, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1850.00 (n=14, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1610.00 (n=15, k=5, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1526.67 (n=17, k=6, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1467.14 (n=19, k=7, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1360.00 (n=20, k=8, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1332.22 (n=22, k=9, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1270.00 (n=23, k=10, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1246.36 (n=25, k=11, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1235.00 (n=27, k=12, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1196.92 (n=28, k=13, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1181.43 (n=30, k=14, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1153.33 (n=31, k=15, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1151.25 (n=33, k=16, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1130.00 (n=34, k=17, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 1120.00 (n=36, k=18, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 1103.68 (n=37, k=19, sz=13)
+Hoàn thành HGIDA. Thời gian chạy: 271.73s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 923.08 (n=48, k=26)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.12s
+
+--- Chạy Kịch bản 2 với N=50, SA=500, p_mu=0.95 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=500, p_mu=0.95...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 3600.00 (n=7, k=1, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2350.00 (n=9, k=2, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1933.33 (n=11, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1725.00 (n=13, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1500.00 (n=14, k=5, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1433.33 (n=16, k=6, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1385.71 (n=18, k=7, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1287.50 (n=19, k=8, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1266.67 (n=21, k=9, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1200.00 (n=22, k=10, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1190.91 (n=24, k=11, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1141.67 (n=25, k=12, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1138.46 (n=27, k=13, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1100.00 (n=28, k=14, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1076.67 (n=29, k=15, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1068.75 (n=31, k=16, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1051.18 (n=32, k=17, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1031.05 (n=35, k=19, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1014.76 (n=38, k=21, sz=11)
+Hoàn thành HGIDA. Thời gian chạy: 294.60s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 857.14 (n=48, k=28)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.09s
+
+--- Chạy Kịch bản 2 với N=50, SA=1000, p_mu=0.8 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=1000, p_mu=0.8...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 6130.00 (n=12, k=2, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 4796.67 (n=14, k=3, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 4140.00 (n=16, k=4, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 3740.00 (n=18, k=5, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 3473.33 (n=20, k=6, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 3282.86 (n=22, k=7, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 3140.00 (n=24, k=8, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 3028.89 (n=26, k=9, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 2940.00 (n=28, k=10, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 2867.27 (n=30, k=11, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 2733.33 (n=31, k=12, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 2688.46 (n=33, k=13, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 2650.00 (n=35, k=14, sz=15)
+Hoàn thành HGIDA. Thời gian chạy: 245.97s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 2272.73 (n=50, k=22)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.13s
+
+--- Chạy Kịch bản 2 với N=50, SA=1000, p_mu=0.9 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=1000, p_mu=0.9...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 5110.00 (n=10, k=2, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 4100.00 (n=12, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 3600.00 (n=14, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 3110.00 (n=15, k=5, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2943.33 (n=17, k=6, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2824.29 (n=19, k=7, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2610.00 (n=20, k=8, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2554.44 (n=22, k=9, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2420.00 (n=23, k=10, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 2382.73 (n=25, k=11, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2360.00 (n=27, k=12, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2273.85 (n=28, k=13, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 2252.86 (n=30, k=14, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2186.67 (n=31, k=15, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 2182.50 (n=33, k=16, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 2130.00 (n=34, k=17, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 2120.00 (n=36, k=18, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 2077.37 (n=37, k=19, sz=13)
+Hoàn thành HGIDA. Thời gian chạy: 1143.41s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 1846.15 (n=48, k=26)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.05s
+
+--- Chạy Kịch bản 2 với N=50, SA=1000, p_mu=0.95 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=1000, p_mu=0.95...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 4600.00 (n=9, k=2, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 3766.67 (n=11, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 3350.00 (n=13, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2900.00 (n=14, k=5, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2766.67 (n=16, k=6, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2671.43 (n=18, k=7, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2475.00 (n=19, k=8, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2433.33 (n=21, k=9, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2300.00 (n=22, k=10, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2281.82 (n=24, k=11, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2183.33 (n=25, k=12, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2176.92 (n=27, k=13, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2100.00 (n=28, k=14, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 2043.33 (n=29, k=15, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 2037.50 (n=31, k=16, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 1992.35 (n=32, k=17, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1952.11 (n=35, k=19, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 1919.52 (n=38, k=21, sz=11)
+Hoàn thành HGIDA. Thời gian chạy: 274.52s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 1714.29 (n=48, k=28)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.21s
+
+--- Chạy Kịch bản 2 với N=50, SA=2000, p_mu=0.8 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=2000, p_mu=0.8...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 9463.33 (n=14, k=3, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 8140.00 (n=16, k=4, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 7340.00 (n=18, k=5, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 6806.67 (n=20, k=6, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 6425.71 (n=22, k=7, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 6140.00 (n=24, k=8, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 5917.78 (n=26, k=9, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 5740.00 (n=28, k=10, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 5594.55 (n=30, k=11, sz=14)
+  -> Tìm thấy giải pháp mới: Z = 5316.67 (n=31, k=12, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 5226.92 (n=33, k=13, sz=15)
+  -> Tìm thấy giải pháp mới: Z = 5150.00 (n=35, k=14, sz=15)
+Hoàn thành HGIDA. Thời gian chạy: 216.72s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 4545.45 (n=50, k=22)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.06s
+
+--- Chạy Kịch bản 2 với N=50, SA=2000, p_mu=0.9 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=2000, p_mu=0.9...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 8100.00 (n=12, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 7100.00 (n=14, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 6110.00 (n=15, k=5, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 5776.67 (n=17, k=6, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 5538.57 (n=19, k=7, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 5110.00 (n=20, k=8, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 4998.89 (n=22, k=9, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 4720.00 (n=23, k=10, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 4655.45 (n=25, k=11, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 4610.00 (n=27, k=12, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 4427.69 (n=28, k=13, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 4395.71 (n=30, k=14, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 4253.33 (n=31, k=15, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 4245.00 (n=33, k=16, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 4130.00 (n=34, k=17, sz=13)
+  -> Tìm thấy giải pháp mới: Z = 4120.00 (n=36, k=18, sz=12)
+  -> Tìm thấy giải pháp mới: Z = 4024.74 (n=37, k=19, sz=13)
+Hoàn thành HGIDA. Thời gian chạy: 236.97s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 3692.31 (n=48, k=26)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.06s
+
+--- Chạy Kịch bản 2 với N=50, SA=2000, p_mu=0.95 ---
+Tạo dữ liệu cho N=50, seed=42, base_SA=2000, p_mu=0.95...
+Bắt đầu thuật toán HGIDA...
+  -> Tìm thấy giải pháp mới: Z = 7433.33 (n=11, k=3, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 6600.00 (n=13, k=4, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 5700.00 (n=14, k=5, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 5433.33 (n=16, k=6, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 5242.86 (n=18, k=7, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 4850.00 (n=19, k=8, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 4766.67 (n=21, k=9, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 4500.00 (n=22, k=10, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 4463.64 (n=24, k=11, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 4266.67 (n=25, k=12, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 4253.85 (n=27, k=13, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 4100.00 (n=28, k=14, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 3976.67 (n=29, k=15, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 3975.00 (n=31, k=16, sz=10)
+  -> Tìm thấy giải pháp mới: Z = 3874.71 (n=32, k=17, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 3794.21 (n=35, k=19, sz=11)
+  -> Tìm thấy giải pháp mới: Z = 3729.05 (n=38, k=21, sz=11)
+Hoàn thành HGIDA. Thời gian chạy: 258.71s
+Bắt đầu Monolithic_Solver (Gurobi - Storage Cost)...
+  [Debug] Đang tạo Gurobi Model...
+  [Debug] Đã tạo Model. Đang trích xuất tham số...
+  [Debug] Đã trích xuất tham số. Đang định nghĩa biến...
+  [Debug] Đã định nghĩa biến. Đang thêm ràng buộc...
+  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...
+  [Debug] Đã đặt hàm mục tiêu. Đang đặt tham số Gurobi...
+  [Debug] Đã đặt tham số (NonConvex=2, TimeLimit=600). Chuẩn bị gọi optimize...
+  [Debug] Đã gọi optimize xong. Đang xử lý kết quả...
+  -> Monolithic_Solver (Gurobi - Storage Cost) TIMEOUT after 600s.
+  -> Best feasible solution before timeout: Z = 3428.57 (n=48, k=28)
+Bắt đầu thuật toán Greedy Baseline...
+Greedy Baseline không tìm thấy giải pháp nào.
+Hoàn thành Greedy Baseline. Thời gian chạy: 1.12s
+
+--- KẾT QUẢ TỔNG HỢP ---
+    Scenario    N   S_A  p_mu                                  Algorithm       Cost_Z       Time_s     n     k             Status
+2          1   20   500  0.90                            Greedy Baseline          NaN          NaN   NaN   NaN  Infeasible/Failed
+0          1   20   500  0.90                           HGIDA (Proposed)  4120.000000     2.646136   8.0   1.0            Optimal
+1          1   20   500  0.90  Monolithic_Solver (Gurobi - Storage Cost)  1428.571429    15.450006  20.0   7.0            Optimal
+3          1   40   500  0.90                           HGIDA (Proposed)  1245.000000    46.863781  27.0  12.0            Optimal
+4          1   40   500  0.90  Monolithic_Solver (Gurobi - Storage Cost)  1000.000000   600.000000  40.0  20.0            Timeout
+5          1   60   500  0.90                           HGIDA (Proposed)  1023.846154   241.873003  47.0  26.0            Optimal
+6          1   60   500  0.90  Monolithic_Solver (Gurobi - Storage Cost)   867.647059   600.000000  59.0  34.0            Timeout
+7          1   80   500  0.90                           HGIDA (Proposed)   941.463415   625.299262  69.0  41.0            Optimal
+8          1   80   500  0.90  Monolithic_Solver (Gurobi - Storage Cost)   806.122449   600.000000  79.0  49.0            Timeout
+9          1  100   500  0.90                           HGIDA (Proposed)   894.642857  1240.469947  89.0  56.0            Optimal
+10         1  100   500  0.90  Monolithic_Solver (Gurobi - Storage Cost)   773.437500   600.000000  99.0  64.0            Timeout
+11         2   50   200  0.80                           HGIDA (Proposed)   650.000000   191.653371  35.0  14.0            Optimal
+12         2   50   200  0.80  Monolithic_Solver (Gurobi - Storage Cost)   454.545455   600.000000  50.0  22.0            Timeout
+13         2   50   200  0.90                           HGIDA (Proposed)   510.526316   252.038992  39.0  19.0            Optimal
+14         2   50   200  0.90  Monolithic_Solver (Gurobi - Storage Cost)   369.230769   600.000000  48.0  26.0            Timeout
+15         2   50   200  0.95                           HGIDA (Proposed)   471.428571   275.645744  39.0  21.0            Optimal
+16         2   50   200  0.95  Monolithic_Solver (Gurobi - Storage Cost)   342.857143   600.000000  48.0  28.0            Timeout
+17         2   50   500  0.80                           HGIDA (Proposed)  1400.000000   234.071711  35.0  14.0            Optimal
+18         2   50   500  0.80  Monolithic_Solver (Gurobi - Storage Cost)  1136.363636   600.000000  50.0  22.0            Timeout
+19         2   50   500  0.90                           HGIDA (Proposed)  1103.684211   271.733810  37.0  19.0            Optimal
+20         2   50   500  0.90  Monolithic_Solver (Gurobi - Storage Cost)   923.076923   600.000000  48.0  26.0            Timeout
+21         2   50   500  0.95                           HGIDA (Proposed)  1014.761905   294.603416  38.0  21.0            Optimal
+22         2   50   500  0.95  Monolithic_Solver (Gurobi - Storage Cost)   857.142857   600.000000  48.0  28.0            Timeout
+23         2   50  1000  0.80                           HGIDA (Proposed)  2650.000000   245.974361  35.0  14.0            Optimal
+24         2   50  1000  0.80  Monolithic_Solver (Gurobi - Storage Cost)  2272.727273   600.000000  50.0  22.0            Timeout
+25         2   50  1000  0.90                           HGIDA (Proposed)  2077.368421  1143.407073  37.0  19.0            Optimal
+26         2   50  1000  0.90  Monolithic_Solver (Gurobi - Storage Cost)  1846.153846   600.000000  48.0  26.0            Timeout
+27         2   50  1000  0.95                           HGIDA (Proposed)  1919.523810   274.522234  38.0  21.0            Optimal
+28         2   50  1000  0.95  Monolithic_Solver (Gurobi - Storage Cost)  1714.285714   600.000000  48.0  28.0            Timeout
+29         2   50  2000  0.80                           HGIDA (Proposed)  5150.000000   216.717139  35.0  14.0            Optimal
+30         2   50  2000  0.80  Monolithic_Solver (Gurobi - Storage Cost)  4545.454545   600.000000  50.0  22.0            Timeout
+31         2   50  2000  0.90                           HGIDA (Proposed)  4024.736842   236.967565  37.0  19.0            Optimal
+32         2   50  2000  0.90  Monolithic_Solver (Gurobi - Storage Cost)  3692.307692   600.000000  48.0  26.0            Timeout
+33         2   50  2000  0.95                           HGIDA (Proposed)  3729.047619   258.708233  38.0  21.0            Optimal
+34         2   50  2000  0.95  Monolithic_Solver (Gurobi - Storage Cost)  3428.571429   600.000000  48.0  28.0            Timeout
+Đã lưu kết quả vào evaluation_results_v3.csv
+Đang vẽ biểu đồ...
+Đã lưu biểu đồ plot_scen1_cost.png
+Đã lưu biểu đồ plot_scen1_time.png
+
+--- Dữ liệu cho Kịch bản 2 (Sensitivity) ---
+Gợi ý vẽ biểu đồ 3D cho Kịch bản 2 (HGIDA Cost vs SA vs p_mu):
+Sử dụng thư viện như matplotlib.pyplot (Axes3D) hoặc plotly.
+Trục X: S_A (Archive Data Size)
+Trục Y: p_mu (Mean Availability)
+Trục Z: Cost_Z (Total Cost)
+Đã lưu (ví dụ) biểu đồ plot_scen2_3D_cost.png
+
+Hoặc vẽ nhiều biểu đồ 2D:
+- Cost vs SA (vẽ 3 đường cho 3 mức p_mu)
+- Cost vs p_mu (vẽ nhiều đường cho các mức SA)
+
+Hoàn thành vẽ và lưu biểu đồ.
