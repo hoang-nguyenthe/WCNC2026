@@ -1,5 +1,3 @@
-# hgida_solver.py
-# Chứa thuật toán chính HGIDA (Algorithm 1)
 
 import math
 import time
@@ -46,11 +44,25 @@ def precalculate_bounds(params):
     return params
 
 def get_k_min_cap(n, params):
-    # [cite_start]k >= S_A / C_(n) [cite: 154-155]
-    C_n = params["C_n"].get(n)
-    if C_n is None or C_n == 0:
+    """
+    Tính k_min từ ràng buộc dung lượng (C4), sử dụng logic đã sửa.
+    k >= S_A / C_(N-n+1)
+    """
+    N = params["N_nodes"]
+    
+    # Logic cũ (SAI): C_n = params["C_n"].get(n)
+    
+    # Logic mới (ĐÚNG): Lấy node C_(N-n+1)
+    # Đây là node có dung lượng nhỏ nhất trong số N-n+1 node lớn nhất
+    # (hay còn gọi là node lớn thứ n)
+    idx = N - n + 1
+    C_N_minus_n_plus_1 = params["C_n"].get(idx)
+    
+    if C_N_minus_n_plus_1 is None or C_N_minus_n_plus_1 == 0:
         return params["N_nodes"] + 1 # Không khả thi
-    return math.ceil(params["S_A"] / C_n) # [cite: 155]
+        
+    # Sửa công thức [cite: 154-155]
+    return math.ceil(params["S_A"] / C_N_minus_n_plus_1)
 
 def get_k_max_avail(n, params):
     # [cite_start]k <= P_n - s(n) + 1 [cite: 168]
@@ -151,10 +163,8 @@ def check_feasibility(n_param, k_param, sz_param, params):
 # [cite_start]PHẦN 3: THUẬT TOÁN CHÍNH (Algorithm 1) [cite: 191]
 # ===================================================================
 
-def solve_heuristic_search(params):
-    """
-    [cite_start]Thực thi Algorithm 1: Heuristically-Guided Iterative Decomposition [cite: 192]
-    """
+def solve_exact_decomposition(params):
+
     start_time = time.time()
     
     # [cite_start]1. Tiền xử lý (Line 3) [cite: 194]
@@ -164,7 +174,7 @@ def solve_heuristic_search(params):
     Z_best = float('inf') # [cite: 195]
     solution_best = None # [cite: 195]
     
-    print("Bắt đầu thuật toán HGIDA...")
+    print("Bắt đầu thuật toán EIDA...")
 
     # [cite_start]2. Vòng lặp 1: n (Line 4) [cite: 118, 196]
     for n_test in range(2, N + 1):
@@ -222,6 +232,6 @@ def solve_heuristic_search(params):
     end_time = time.time()
     if solution_best:
         solution_best["computation_time"] = end_time - start_time
-    print(f"Hoàn thành HGIDA. Thời gian chạy: {end_time - start_time:.2f}s")
+    print(f"Hoàn thành EIDA. Thời gian chạy: {end_time - start_time:.2f}s")
     
     return solution_best

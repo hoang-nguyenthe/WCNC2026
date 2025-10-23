@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 # Import các file .py khác
 import config
-from hgida_solver import solve_heuristic_search
+from exact_solver import solve_exact_decomposition
 from baselines import solve_greedy_baseline
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -71,7 +71,7 @@ def create_problem_instance(N, seed=42, base_SA=500, p_mu=0.9, p_sigma=0.05):
 
     return params
 
-def solve_monolithic(params, time_limit=600):
+def solve_monolithic(params, time_limit=2000):
     """
     Solves the original non-convex Storage Cost MINLP (from Final_paper_v2) using Gurobi.
     """
@@ -250,7 +250,7 @@ def run_experiment():
     """
     print("--- Bắt đầu hàm run_experiment() ---")
     all_results = []
-    solver_time_limit = 600 # Giới hạn thời gian cho Monolithic Solver [cite: 2655]
+    solver_time_limit = 2000 # Giới hạn thời gian cho Monolithic Solver [cite: 2655]
 
     # --- Kịch bản 1: Scalability vs. N ---
     print("\n===== BẮT ĐẦU KỊCH BẢN 1: SCALABILITY vs. N =====")
@@ -261,16 +261,16 @@ def run_experiment():
     for N in N_values_scen1:
         print(f"\n--- Chạy Kịch bản 1 với N = {N} ---")
         params = create_problem_instance(N, seed=42, base_SA=SA_scen1, p_mu=p_mu_scen1)
-        print(f"  [Debug] Chuẩn bị gọi solve_heuristic_search cho N={N}...") # <<< PRINT MỚI >>>
-        # Chạy HGIDA
-        result_hgida = solve_heuristic_search(params)
+        print(f"  [Debug] Chuẩn bị gọi solve_exact_decomposition cho N={N}...") # <<< PRINT MỚI >>>
+
+        result_hgida = solve_exact_decomposition(params)
         if result_hgida:
             all_results.append({
                 "Scenario": 1, "N": N, "S_A": SA_scen1, "p_mu": p_mu_scen1,
-                "Algorithm": "HGIDA (Proposed)",
+                "Algorithm": "EIDA (Proposed)",
                 "Cost_Z": result_hgida["Z_best"],
                 "Time_s": result_hgida["computation_time"],
-                "n": result_hgida["n"], "k": result_hgida["k"], "Status": "Optimal"
+                "n": result_hgida["n"], "k": result_hgida["k"], "sum_z": result_hgida["sum_z"], "Status": "Optimal"
             })
 
         # Chạy Monolithic Solver (CẦN CODE THỰC TẾ)
@@ -289,7 +289,7 @@ def run_experiment():
                 "Algorithm": "Greedy Baseline",
                 "Cost_Z": result_greedy["Z_best"],
                 "Time_s": result_greedy["computation_time"],
-                "n": result_greedy["n"], "k": result_greedy["k"], "Status": "Optimal"
+                "n": result_greedy["n"], "k": result_greedy["k"], "sum_z": result_greedy["sum_z"], "Status": "Optimal"
             })
         elif result_mono and result_mono["Status"] != "Timeout": # Chỉ thêm nếu Greedy thất bại nhưng Mono thành công
              all_results.append({
@@ -309,15 +309,15 @@ def run_experiment():
             print(f"\n--- Chạy Kịch bản 2 với N={N_scen2}, SA={SA_test}, p_mu={p_mu_test} ---")
             params = create_problem_instance(N_scen2, seed=42, base_SA=SA_test, p_mu=p_mu_test)
 
-            # Chạy HGIDA
-            result_hgida = solve_heuristic_search(params)
+            # Chạy EIDA
+            result_hgida = solve_exact_decomposition(params)
             if result_hgida:
                 all_results.append({
                     "Scenario": 2, "N": N_scen2, "S_A": SA_test, "p_mu": p_mu_test,
-                    "Algorithm": "HGIDA (Proposed)",
+                    "Algorithm": "EIDA (Proposed)",
                     "Cost_Z": result_hgida["Z_best"],
                     "Time_s": result_hgida["computation_time"],
-                    "n": result_hgida["n"], "k": result_hgida["k"], "Status": "Optimal"
+                    "n": result_hgida["n"], "k": result_hgida["k"], "sum_z": result_hgida["sum_z"], "Status": "Optimal"
                 })
 
             # Chạy Monolithic Solver (CẦN CODE THỰC TẾ)
@@ -336,7 +336,7 @@ def run_experiment():
                     "Algorithm": "Greedy Baseline",
                     "Cost_Z": result_greedy["Z_best"],
                     "Time_s": result_greedy["computation_time"],
-                    "n": result_greedy["n"], "k": result_greedy["k"], "Status": "Optimal"
+                    "n": result_greedy["n"], "k": result_greedy["k"], "sum_z": result_greedy["sum_z"], "Status": "Optimal"
                 })
             elif result_mono and result_mono["Status"] != "Timeout": # Chỉ thêm nếu Greedy thất bại nhưng Mono thành công
                  all_results.append({
@@ -428,10 +428,10 @@ def plot_results(df):
     if not df_scen2.empty:
         print("\n--- Dữ liệu cho Kịch bản 2 (Sensitivity) ---")
         # [cite_start]Chỉ lấy kết quả của HGIDA cho plot 3D như yêu cầu [cite: 2641]
-        df_hgida_scen2 = df_scen2[df_scen2["Algorithm"] == "HGIDA (Proposed)"]
+        df_hgida_scen2 = df_scen2[df_scen2["Algorithm"] == "EIDA (Proposed)"]
 
         if not df_hgida_scen2.empty:
-            print("Gợi ý vẽ biểu đồ 3D cho Kịch bản 2 (HGIDA Cost vs SA vs p_mu):")
+            print("Gợi ý vẽ biểu đồ 3D cho Kịch bản 2 (EIDA Cost vs SA vs p_mu):")
             print("Sử dụng thư viện như matplotlib.pyplot (Axes3D) hoặc plotly.")
             print("Trục X: S_A (Archive Data Size)")
             print("Trục Y: p_mu (Mean Availability)")
@@ -451,13 +451,62 @@ def plot_results(df):
             ax.set_xlabel('Archive Data Size (S_A, GB)')
             ax.set_ylabel('Mean Availability (p_mu)')
             ax.set_zlabel('Total Cost (Cost_Z)')
-            ax.set_title('Kịch bản 2: HGIDA Cost vs. S_A and Reliability')
+            ax.set_title('Kịch bản 2: EIDA Cost vs. S_A and Reliability')
             fig.colorbar(scatter, label='Cost_Z')
             plt.savefig("plot_scen2_3D_cost.png")
             print("Đã lưu (ví dụ) biểu đồ plot_scen2_3D_cost.png")
             # plt.show() # Hiển thị nếu cần
             plt.close()
             # ---------------------------------------------------------------------
+            print("Đang vẽ biểu đồ 3D Stem...")
+            fig_stem = plt.figure(figsize=(10, 8))
+            ax_stem = fig_stem.add_subplot(111, projection='3d')
+            
+            # Sử dụng lại x, y, z từ trên
+            
+            # Vẽ các "chân" (stem)
+            # ax_stem.stem() không hỗ trợ trực tiếp cho 3D
+            # Chúng ta sẽ tự vẽ thủ công bằng ax_stem.plot()
+            for (xi, yi, zi) in zip(x, y, z):
+                # Vẽ đường thẳng đứng (stem) từ (xi, yi, 0) đến (xi, yi, zi)
+                ax_stem.plot([xi, xi], [yi, yi], [0, zi], marker="_", color="grey", alpha=0.7)
+
+            # Vẽ các điểm marker ở trên cùng (để đè lên đầu các stem)
+            # Điều này tạo ra hiệu ứng marker đẹp hơn
+            ax_stem.scatter(x, y, z, c=z, cmap='viridis', marker='o', depthshade=True)
+
+            ax_stem.set_xlabel('Archive Data Size (S_A, GB)')
+            ax_stem.set_ylabel('Mean Availability (p_mu)')
+            ax_stem.set_zlabel('Total Cost (Cost_Z)')
+            ax_stem.set_title('Kịch bản 2: EIDA Cost vs. S_A and Reliability (Stem Plot)')
+            
+            # Không cần colorbar, nhưng bạn có thể thêm nếu muốn
+            # fig_stem.colorbar(scatter, label='Cost_Z') # Nếu bạn muốn thêm colorbar
+            
+            plt.savefig("plot_scen2_3D_stem.png") # Lưu file mới
+            print("Đã lưu biểu đồ plot_scen2_3D_stem.png")
+            plt.close(fig_stem) # Đóng figure stem
+            
+            print("Đang vẽ biểu đồ 3D Scatter cho sum_z...")
+            fig_sumz = plt.figure(figsize=(10, 8))
+            ax_sumz = fig_sumz.add_subplot(111, projection='3d')
+            
+            # Lấy dữ liệu sum_z cho trục Z mới
+            z_sumz = df_hgida_scen2['sum_z'] # <-- TRỤC Z MỚI LÀ SUM_Z
+            
+            # Sử dụng lại x, y từ trên
+            scatter_sumz = ax_sumz.scatter(x, y, z_sumz, c=z_sumz, cmap='plasma', marker='o') # cmap khác
+            
+            ax_sumz.set_xlabel('Archive Data Size (S_A, GB)')
+            ax_sumz.set_ylabel('Mean Availability (p_mu)')
+            ax_sumz.set_zlabel('Số lượng Hot Replicas (sum_z)') # <-- Label là sum_z
+            ax_sumz.set_title('Kịch bản 2: EIDA sum_z vs. S_A and Reliability') # <-- Tiêu đề mới
+            
+            fig_sumz.colorbar(scatter_sumz, label='sum_z') # Colorbar mới
+            
+            plt.savefig("plot_scen2_3D_sum_z.png") # Lưu file mới
+            print("Đã lưu biểu đồ plot_scen2_3D_sum_z.png")
+            plt.close(fig_sumz) # Đóng figure mới
 
             # Hoặc có thể vẽ nhiều đồ thị 2D
             print("\nHoặc vẽ nhiều biểu đồ 2D:")
@@ -465,7 +514,7 @@ def plot_results(df):
             print("- Cost vs p_mu (vẽ nhiều đường cho các mức SA)")
 
         else:
-             print("Không có dữ liệu HGIDA cho Kịch bản 2.")
+             print("Không có dữ liệu EIDA cho Kịch bản 2.")
 
     else:
          print("Không có dữ liệu cho Kịch bản 2 để vẽ đồ thị.")

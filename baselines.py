@@ -3,14 +3,14 @@
 
 import time
 import math
-from hgida_solver import check_feasibility, precalculate_bounds # Import các hàm từ file kia
+from exact_solver import check_feasibility, precalculate_bounds # Import các hàm từ file kia
 
 def solve_greedy_baseline(params):
     """
     Một baseline tham lam:
     1. Cố định n = 70% tổng số node.
     2. Cố định k = n - 1 (để tối ưu chi phí S_A/k).
-    3. Chỉ tìm sum_z nhỏ nhất (giống Vòng lặp 3 của HGIDA).
+    3. Chỉ tìm sum_z nhỏ nhất (giống Vòng lặp 3 của thuật toán chính).
     """
     start_time = time.time()
     print("Bắt đầu thuật toán Greedy Baseline...")
