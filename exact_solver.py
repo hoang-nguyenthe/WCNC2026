@@ -117,9 +117,34 @@ def check_feasibility(n_param, k_param, sz_param, params):
         prob += z[i] * params["S_H"] + x[i] * frag_size <= params["C"][i] # [cite: 60, 245]
 
     # [cite_start]Ràng buộc Tin cậy Hot (C5) - Đã tuyến tính hóa [cite: 184-186, 248]
-    C_H_rhs = -math.log(params["tau_H"]) * sz_param # [cite: 61, 185]
-    Constant_H = (params["N_hot_min"] - 1) + math.sqrt(C_H_rhs / 2.0) # [cite: 186]
-    prob += lpSum(z[i] * params["p"][i] for i in nodes) >= Constant_H # [cite: 186, 246]
+    try:
+        # Kiểm tra tau_H hợp lệ trước
+        if params["tau_H"] <= 0 or params["tau_H"] >= 1:
+            print(f"  ERROR: Invalid tau_H ({params['tau_H']})") # Thêm print lỗi
+            return False, None
+        if sz_param == 0:
+            # Ràng buộc gốc (6) luôn đúng khi sum(z)=0 (vế trái >= 0, vế phải = 0)
+            # Không cần thêm ràng buộc tuyến tính hóa (vì nó sẽ thành 0 >= N_hot_min - 1)
+            pass # Bỏ qua, không thêm ràng buộc C5
+        else:
+            # Chỉ tính và thêm ràng buộc khi sz_param > 0
+            C_H_rhs = -math.log(params["tau_H"]) * sz_param
+            sqrt_arg_h = C_H_rhs / 2.0
+            # Xử lý số âm rất nhỏ do làm tròn số (~0)
+            if sqrt_arg_h < 0 and abs(sqrt_arg_h) < 1e-9:
+                sqrt_arg_h = 0
+            elif sqrt_arg_h < 0: # Số thực sự âm
+                print(f"  ERROR: Negative sqrt_arg_h ({sqrt_arg_h}) for Constant_H")
+                return False, None # Tham số căn bậc hai âm -> không khả thi
+
+            Constant_H = (params["N_hot_min"] - 1) + math.sqrt(sqrt_arg_h)
+            prob += lpSum(z[i] * params["p"][i] for i in nodes) >= Constant_H
+    except ValueError as e: # Bắt lỗi miền giá trị từ log hoặc sqrt
+        print(f"  ERROR calculating Constant_H (ValueError): {e}")
+        return False, None
+    except Exception as e: # Bắt các lỗi khác
+        print(f"  UNEXPECTED ERROR calculating Constant_H: {e}")
+        return False, None
 
     # [cite_start]Ràng buộc Tin cậy Archive (C6) - Đã tuyến tính hóa [cite: 187-188, 249]
     C_A_rhs = -math.log(params["tau_A"]) * n_param # [cite: 62, 188]
@@ -200,7 +225,7 @@ def solve_exact_decomposition(params):
                 continue
                 
             # [cite_start]6. Vòng lặp 3: sum(z_i) (Line 10) [cite: 127, 211]
-            z_L = params["N_hot_min"] # [cite: 129, 209]
+            z_L = 0 # [cite: 129, 209]
             z_U = N - n_test          # [cite: 209]
             
             # [cite_start]Duyệt từ thấp lên cao (directed search) [cite: 128-129]

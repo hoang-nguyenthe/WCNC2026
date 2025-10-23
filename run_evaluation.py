@@ -71,7 +71,7 @@ def create_problem_instance(N, seed=42, base_SA=500, p_mu=0.9, p_sigma=0.05):
 
     return params
 
-def solve_monolithic(params, time_limit=2000):
+def solve_monolithic(params, time_limit=6000):
     """
     Solves the original non-convex Storage Cost MINLP (from Final_paper_v2) using Gurobi.
     """
@@ -250,7 +250,7 @@ def run_experiment():
     """
     print("--- Bắt đầu hàm run_experiment() ---")
     all_results = []
-    solver_time_limit = 2000 # Giới hạn thời gian cho Monolithic Solver [cite: 2655]
+    solver_time_limit = 6000 # Giới hạn thời gian cho Monolithic Solver [cite: 2655]
 
     # --- Kịch bản 1: Scalability vs. N ---
     print("\n===== BẮT ĐẦU KỊCH BẢN 1: SCALABILITY vs. N =====")
