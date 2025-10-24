@@ -1,0 +1,43 @@
+Scenario,N,S_A,p_mu,Algorithm,Cost_Z,Time_s,n,k,sum_z,Status
+1,20,500,0.9,EIDA (Proposed),1766.6666666666665,4.299946069717407,10.0,3.0,10.0,Optimal
+1,20,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),1766.6666666666667,1000.0,10.0,3.0,10.0,Timeout
+1,30,500,0.9,EIDA (Proposed),1155.5555555555557,38.72231197357178,19.0,9.0,10.0,Optimal
+1,30,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),1155.5555503784435,1000.0,19.0,9.0,10.0,Timeout
+1,40,500,0.9,EIDA (Proposed),1016.25,102.53815484046936,29.0,16.0,11.0,Optimal
+1,40,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),1033.333202591268,1000.0,28.0,15.0,10.0,Timeout
+1,50,500,0.9,EIDA (Proposed),957.8260869565217,221.58442497253418,39.0,23.0,11.0,Optimal
+1,50,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),963.6363636363636,1000.0,38.0,22.0,10.0,Timeout
+1,60,500,0.9,EIDA (Proposed),906.4516129032259,375.8219850063324,50.0,31.0,10.0,Optimal
+1,60,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),906.4516127217352,1000.0,50.0,31.0,10.0,Timeout
+1,70,500,0.9,EIDA (Proposed),872.0512820512821,564.6394591331482,61.0,39.0,9.0,Optimal
+1,70,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),876.3157893859525,1000.0,59.0,38.0,10.0,Timeout
+1,80,500,0.9,EIDA (Proposed),850.8695652173914,714.8222410678864,70.0,46.0,9.0,Optimal
+1,80,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),855.5555515653355,1000.0,68.0,45.0,10.0,Timeout
+1,90,500,0.9,EIDA (Proposed),840.0,737.4230108261108,78.0,52.0,9.0,Optimal
+1,90,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),845.0980356718089,1000.0,76.0,51.0,10.0,Timeout
+1,100,500,0.9,EIDA (Proposed),822.1428571428571,979.9346039295197,82.0,56.0,9.0,Optimal
+1,100,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),825.806431558763,1000.0,90.0,62.0,10.0,Timeout
+2,50,200,0.8,EIDA (Proposed),541.1111111111111,185.48562717437744,37.0,18.0,13.0,Optimal
+2,50,200,0.8,Monolithic_Solver (Gurobi - Storage Cost),541.1111111111111,1000.0,37.0,18.0,13.0,Timeout
+2,50,200,0.9,EIDA (Proposed),437.82608695652175,196.27040576934814,40.0,23.0,9.0,Optimal
+2,50,200,0.9,Monolithic_Solver (Gurobi - Storage Cost),437.82608695652175,1000.0,40.0,23.0,9.0,Timeout
+2,50,200,0.95,EIDA (Proposed),410.0,211.7366428375244,40.0,25.0,9.0,Optimal
+2,50,200,0.95,Monolithic_Solver (Gurobi - Storage Cost),410.0,1000.0,40.0,25.0,9.0,Timeout
+2,50,500,0.8,EIDA (Proposed),1157.7777777777778,214.47727799415588,37.0,18.0,13.0,Optimal
+2,50,500,0.8,Monolithic_Solver (Gurobi - Storage Cost),1175.5555555555557,1000.0,38.0,18.0,12.0,Timeout
+2,50,500,0.9,EIDA (Proposed),957.8260869565217,193.49065494537354,39.0,23.0,11.0,Optimal
+2,50,500,0.9,Monolithic_Solver (Gurobi - Storage Cost),963.6363636363636,1000.0,38.0,22.0,10.0,Timeout
+2,50,500,0.95,EIDA (Proposed),880.0,200.3463249206543,39.0,25.0,10.0,Optimal
+2,50,500,0.95,Monolithic_Solver (Gurobi - Storage Cost),890.0,1000.0,40.0,25.0,9.0,Timeout
+2,50,1000,0.8,EIDA (Proposed),2185.5555555555557,181.1029088497162,37.0,18.0,13.0,Optimal
+2,50,1000,0.8,Monolithic_Solver (Gurobi - Storage Cost),2231.111093004255,1000.0,38.0,18.0,12.0,Timeout
+2,50,1000,0.9,EIDA (Proposed),1805.6521739130435,185.74357390403748,39.0,23.0,11.0,Optimal
+2,50,1000,0.9,Monolithic_Solver (Gurobi - Storage Cost),1805.6521739130435,1000.0,39.0,23.0,11.0,Timeout
+2,50,1000,0.95,EIDA (Proposed),1660.0,194.58855080604553,39.0,25.0,10.0,Optimal
+2,50,1000,0.95,Monolithic_Solver (Gurobi - Storage Cost),1683.3333333333333,1000.0,38.0,24.0,10.0,Timeout
+2,50,2000,0.8,EIDA (Proposed),4241.111111111111,156.63591194152832,37.0,18.0,13.0,Optimal
+2,50,2000,0.8,Monolithic_Solver (Gurobi - Storage Cost),4342.222222222223,1000.0,38.0,18.0,12.0,Timeout
+2,50,2000,0.9,EIDA (Proposed),3501.304347826087,162.71303415298462,39.0,23.0,11.0,Optimal
+2,50,2000,0.9,Monolithic_Solver (Gurobi - Storage Cost),3554.5453576000227,1000.0,38.0,22.0,10.0,Timeout
+2,50,2000,0.95,EIDA (Proposed),3220.0,196.19869208335876,39.0,25.0,10.0,Optimal
+2,50,2000,0.95,Monolithic_Solver (Gurobi - Storage Cost),3290.0,1000.0,40.0,25.0,9.0,Timeout

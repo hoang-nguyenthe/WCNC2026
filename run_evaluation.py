@@ -71,7 +71,7 @@ def create_problem_instance(N, seed=42, base_SA=500, p_mu=0.9, p_sigma=0.05):
 
     return params
 
-def solve_monolithic(params, time_limit=6000):
+def solve_monolithic(params, time_limit=1000):
     """
     Solves the original non-convex Storage Cost MINLP (from Final_paper_v2) using Gurobi.
     """
@@ -153,7 +153,8 @@ def solve_monolithic(params, time_limit=6000):
             m.addConstr(T_download + S_A * gamma <= T_max, name="total_time_limit")
             m.addConstr(n_inv_k == n * inv_k, name="bilinear_n_inv_k") # Ràng buộc cho objective
             print("  [Debug] Đã thêm ràng buộc. Đang đặt hàm mục tiêu...") # <<< PRINT MỚI >>>
-
+            if N_hot_min > 0: # Chỉ thêm nếu N_hot_min > 0
+                m.addConstr(sum_z >= N_hot_min, name="min_hot_nodes_required")
             # --- Set Objective ---
             objective_expr = S_A * n_inv_k + S_H * sum_z
             m.setObjective(objective_expr, GRB.MINIMIZE)
@@ -181,6 +182,7 @@ def solve_monolithic(params, time_limit=6000):
                 "Time_s": min(elapsed_time, time_limit),
                 "n": None,
                 "k": None,
+                "sum_z": None,
                 "Status": "Unknown"
             }
 
@@ -189,7 +191,15 @@ def solve_monolithic(params, time_limit=6000):
                 result_dict["Cost_Z"] = m.ObjVal
                 result_dict["n"] = int(round(n.X))
                 result_dict["k"] = int(round(k.X))
-                print(f"  -> {solver_name} found Optimal solution: Z = {m.ObjVal:.2f} in {elapsed_time:.2f}s (n={result_dict['n']}, k={result_dict['k']})")
+                try:
+                    # Tính tổng các giá trị z[i].X từ lời giải tối ưu
+                    result_dict["sum_z"] = int(round(sum(z[i].X for i in nodes)))
+                except AttributeError:
+                    print("  -> Lỗi khi lấy giá trị sum_z cho Optimal.")
+                    result_dict["sum_z"] = None # Để None nếu có lỗi
+                # <<< KẾT THÚC SỬA 2 >>>
+                # <<< SỬA Ở ĐÂY (print): Thêm sz vào print >>>
+                print(f"  -> {solver_name} found Optimal solution: Z = {m.ObjVal:.2f} in {elapsed_time:.2f}s (n={result_dict['n']}, k={result_dict['k']}, sz={result_dict['sum_z']})")
             elif status == GRB.TIME_LIMIT:
                 result_dict["Status"] = "Timeout"
                 print(f"  -> {solver_name} TIMEOUT after {time_limit}s.")
@@ -198,11 +208,13 @@ def solve_monolithic(params, time_limit=6000):
                     try:
                         result_dict["n"] = int(round(n.X))
                         result_dict["k"] = int(round(k.X))
+                        result_dict["sum_z"] = int(round(sum(z[i].X for i in nodes)))
                     except AttributeError:
                         result_dict["n"] = None
                         result_dict["k"] = None
+                        result_dict["sum_z"] = None
                         print("  -> Could not retrieve integer variable values before timeout.")
-                    print(f"  -> Best feasible solution before timeout: Z = {m.ObjVal:.2f} (n={result_dict['n']}, k={result_dict['k']})")
+                    print(f"  -> Best feasible solution before timeout: Z = {m.ObjVal:.2f} (n={result_dict['n']}, k={result_dict['k']}, sz={result_dict['sum_z']})")
                 else:
                      print(f"  -> No feasible solution found before timeout.")
             elif status == GRB.INFEASIBLE:
@@ -250,11 +262,11 @@ def run_experiment():
     """
     print("--- Bắt đầu hàm run_experiment() ---")
     all_results = []
-    solver_time_limit = 6000 # Giới hạn thời gian cho Monolithic Solver [cite: 2655]
+    solver_time_limit = 1000 # Giới hạn thời gian cho Monolithic Solver [cite: 2655]
 
     # --- Kịch bản 1: Scalability vs. N ---
     print("\n===== BẮT ĐẦU KỊCH BẢN 1: SCALABILITY vs. N =====")
-    N_values_scen1 = [20, 40, 60, 80, 100] # [cite: 2621]
+    N_values_scen1 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100] # [cite: 2621]
     SA_scen1 = 500 # [cite: 2614]
     p_mu_scen1 = 0.9 # [cite: 2617]
 
@@ -410,7 +422,7 @@ def plot_results(df):
 
         plt.xlabel("Số lượng Nodes (N)")
         plt.ylabel("Thời gian tính toán (giây) - Log Scale")
-        plt.yscale('log') # Thang log rất quan trọng cho thời gian
+        # plt.yscale('log') # Thang log rất quan trọng cho thời gian
         plt.xticks(N_vals_scen1)
         plt.legend()
         plt.grid(True, which="both", ls="-", alpha=0.5) # Grid cho cả trục log
@@ -524,4 +536,4 @@ def plot_results(df):
     # plt.show() # Bỏ comment nếu muốn hiển thị tất cả các cửa sổ plot cuối cùng
 if __name__ == "__main__":
     print("--- Đang trong block __main__ ---") # Dòng print debug đã thêm
-    run_experiment() # !!! DÒNG NÀY RẤT QUAN TRỌNG !!!
+    run_experiment()

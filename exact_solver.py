@@ -225,7 +225,7 @@ def solve_exact_decomposition(params):
                 continue
                 
             # [cite_start]6. Vòng lặp 3: sum(z_i) (Line 10) [cite: 127, 211]
-            z_L = 0 # [cite: 129, 209]
+            z_L = params["N_hot_min"]
             z_U = N - n_test          # [cite: 209]
             
             # [cite_start]Duyệt từ thấp lên cao (directed search) [cite: 128-129]
