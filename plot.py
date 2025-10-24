@@ -138,7 +138,7 @@ def plot_scenario1_time(csv_filename="evaluation_results_v3.csv"):
 
 
     # --- Lưu biểu đồ ---
-    output_filename = "plot_scen1_time_exact_match.pdf" # Đổi tên file output
+    output_filename = "plot_scen1_time.pdf" # Đổi tên file output
     output_filepath = os.path.join(script_dir, output_filename)
     try:
         plt.savefig(output_filepath, format='pdf')
@@ -260,7 +260,7 @@ def plot_scenario1_cost(csv_filename="evaluation_results_v3.csv"):
 
 
     # --- Lưu biểu đồ ra file PDF ---
-    output_filename = "plot_scen1_cost_recreated.pdf" # Đuôi .pdf
+    output_filename = "plot_scen1_cost.pdf" # Đuôi .pdf
     output_filepath = os.path.join(script_dir, output_filename)
     try:
         plt.savefig(output_filepath, format='pdf') # Lưu dạng pdf
