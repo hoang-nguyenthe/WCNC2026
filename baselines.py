@@ -1,9 +1,6 @@
-# baselines.py
-# Chứa các thuật toán so sánh
-
 import time
 import math
-from exact_solver import check_feasibility, precalculate_bounds # Import các hàm từ file kia
+from exact_solver import check_feasibility, precalculate_bounds
 
 def solve_greedy_baseline(params):
     """
@@ -16,20 +13,13 @@ def solve_greedy_baseline(params):
     print("Bắt đầu thuật toán Greedy Baseline...")
     
     N = params["N_nodes"]
-    # Chúng ta vẫn cần chạy precalculate_bounds để có |F(k)|, P_n, v.v.
-    # dù không dùng hết, nhưng check_feasibility có thể cần.
-    # Trong một kịch bản tối ưu hơn, ta có thể chỉ tính các bound cần thiết.
-    # Tuy nhiên, để đơn giản, cứ gọi hàm này.
-    
-    # Tạo một bản copy của params để tránh ghi đè
     params_copy = params.copy()
     params_copy = precalculate_bounds(params_copy) 
-    
-    # 1. Cố định n, k
+
     n_test = math.floor(N * 0.7)
-    if n_test < 2: n_test = 2 # Đảm bảo n >= 2
+    if n_test < 2: n_test = 2
         
-    k_test = n_test - 1 # k = n - 1
+    k_test = n_test - 1
     
     if k_test <= 0:
         print("Không đủ node cho Greedy Baseline.")
@@ -37,8 +27,7 @@ def solve_greedy_baseline(params):
 
     Z_best = float('inf')
     solution_best = None
-    
-    # 2. Vòng lặp 3: sum(z_i)
+
     z_L = params_copy["N_hot_min"]
     z_U = N - n_test
     
@@ -47,14 +36,12 @@ def solve_greedy_baseline(params):
         return None
 
     for z_test in range(z_L, z_U + 1):
-        
-        # Vẫn phải dùng check_feasibility để xem (n, k, z) này có chạy được không
         feasible, sub_solution = check_feasibility(n_test, k_test, z_test, params_copy)
         
         if feasible:
             Z_current = n_test * (params_copy["S_A"] / k_test) + z_test * params_copy["S_H"]
             
-            if Z_current < Z_best: # Sẽ chỉ chạy 1 lần
+            if Z_current < Z_best:
                 Z_best = Z_current
                 solution_best = {
                     "n": n_test,
@@ -64,8 +51,6 @@ def solve_greedy_baseline(params):
                     "assignments": sub_solution
                 }
                 print(f"  -> Tìm thấy giải pháp Greedy: Z = {Z_best:.2f} (n={n_test}, k={k_test}, sz={z_test})")
-            
-            # Đã tìm thấy z_test nhỏ nhất, thoát khỏi vòng lặp
             break 
             
     end_time = time.time()
