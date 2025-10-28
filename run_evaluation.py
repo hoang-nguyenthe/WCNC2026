@@ -31,9 +31,9 @@ def create_problem_instance(N, seed=42, base_SA=500, p_mu=0.9, p_sigma=0.05):
     C_raw = np.random.normal(C_mu, C_sigma, N)
     C = {i: max(1.0, C_raw[i]) for i in nodes} 
 
-    B_mu, B_sigma = 0.005, 0.002
+    B_mu, B_sigma = 0.050, 0.020
     B_raw = np.random.normal(B_mu, B_sigma, N)
-    B = {i: max(0.1, B_raw[i]) for i in nodes}
+    B = {i: max(0.001, B_raw[i]) for i in nodes}
 
     p_raw = np.random.normal(p_mu, p_sigma, N)
  
